@@ -3,7 +3,7 @@
 from __future__ import unicode_literals
 
 AUTHOR = u'Daniel P Russo'
-SITENAME = u'DeLorean'
+SITENAME = u'DeLorean - They Drew First Blog'
 SITEURL = ''
 
 PATH = 'content'
@@ -18,16 +18,16 @@ CATEGORY_FEED_ATOM = None
 TRANSLATION_FEED_ATOM = None
 AUTHOR_FEED_ATOM = None
 AUTHOR_FEED_RSS = None
-
+ASSET_SOURCE_PATHS = ['theme'] # changed this as per https://github.com/getpelican/pelican/issues/1523
 # Blogroll
 LINKS = (('Pelican', 'http://getpelican.com/'),
          ('Python.org', 'http://python.org/'),
          ('Jinja2', 'http://jinja.pocoo.org/'),
-         ('You can modify those links in your config file', '#'),)
+         ('You can modify those links in your config file', '#'),)#
 
 # Social widget
-SOCIAL = (('You can add links in your config file', '#'),
-          ('Another social link', '#'),)
+SOCIAL = (('@russodanielp', 'https://twitter.com/russodanielp'),
+          ('try', 'www.another.com'))
 
 DEFAULT_PAGINATION = 8
 
