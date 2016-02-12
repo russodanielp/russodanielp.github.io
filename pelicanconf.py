@@ -4,7 +4,7 @@ from __future__ import unicode_literals
 
 AUTHOR = u'Daniel P Russo'
 SITENAME = u'DeLorean - They Drew First Blog'
-SITEURL = ''
+SITEURL = 'https://russodanielp.github.io/'
 
 PATH = 'content'
 
@@ -20,14 +20,12 @@ AUTHOR_FEED_ATOM = None
 AUTHOR_FEED_RSS = None
 ASSET_SOURCE_PATHS = ['theme'] # changed this as per https://github.com/getpelican/pelican/issues/1523
 # Blogroll
-LINKS = (('Pelican', 'http://getpelican.com/'),
-         ('Python.org', 'http://python.org/'),
-         ('Jinja2', 'http://jinja.pocoo.org/'),
-         ('You can modify those links in your config file', '#'),)#
+LINKS = (('Zhu Research Group', 'http://zhu.camden.rutgers.edu/'),
+         ('Rutgers Center for Computational and Integrative Biology', 'https://ccib.camden.rutgers.edu/')
+         )
 
 # Social widget
-SOCIAL = (('@russodanielp', 'https://twitter.com/russodanielp'),
-          ('try', 'www.another.com'))
+SOCIAL = [('@russodanielp', 'https://twitter.com/russodanielp')]
 
 DEFAULT_PAGINATION = 8
 
