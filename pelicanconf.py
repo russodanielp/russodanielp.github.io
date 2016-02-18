@@ -3,7 +3,7 @@
 from __future__ import unicode_literals
 
 AUTHOR = u'Daniel P Russo'
-SITENAME = u'DeLorean - They Drew First Blog'
+SITENAME = u'Drug Discovery in Python'
 SITEURL = 'https://russodanielp.github.io/'
 
 PATH = 'content'
