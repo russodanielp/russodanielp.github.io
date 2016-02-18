@@ -4,7 +4,7 @@ from __future__ import unicode_literals
 
 AUTHOR = u'Daniel P Russo'
 SITENAME = u'Drug Discovery in Python'
-SITEURL = 'https://russodanielp.github.io/'
+SITEURL = 'https://russodanielp.github.io'
 
 PATH = 'content'
 
@@ -21,11 +21,14 @@ AUTHOR_FEED_RSS = None
 ASSET_SOURCE_PATHS = ['theme'] # changed this as per https://github.com/getpelican/pelican/issues/1523
 # Blogroll
 LINKS = (('Zhu Research Group', 'http://zhu.camden.rutgers.edu/'),
-         ('Rutgers Center for Computational and Integrative Biology', 'https://ccib.camden.rutgers.edu/')
+         ('Rutgers Center for Computational and Integrative Biology', 'https://ccib.camden.rutgers.edu/'),
+         ('CIIPro: The Chemical In vitro-In vivo Profiling Project', 'https://ciipro.rutgers.edu/')
          )
 
 # Social widget
-SOCIAL = [('@russodanielp', 'https://twitter.com/russodanielp')]
+SOCIAL = [('@russodanielp', 'https://twitter.com/russodanielp'),
+          ('/rdanielprusso', 'https://www.linkedin.com/in/daniel-russo-31ab896b')
+          ]
 
 DEFAULT_PAGINATION = 8
 
