@@ -22,15 +22,21 @@ ASSET_SOURCE_PATHS = ['theme'] # changed this as per https://github.com/getpelic
 # Blogroll
 LINKS = (('Zhu Research Group', 'http://zhu.camden.rutgers.edu/'),
          ('Rutgers Center for Computational and Integrative Biology', 'https://ccib.camden.rutgers.edu/'),
-         ('CIIPro: The Chemical In vitro-In vivo Profiling Project', 'https://ciipro.rutgers.edu/')
+         ('CIIPro: The Chemical In vitro-In vivo Profiling Project', 'ciipro.rutgers.edu')
          )
 
 # Social widget
 SOCIAL = [('@russodanielp', 'https://twitter.com/russodanielp'),
-          ('/rdanielprusso', 'https://www.linkedin.com/in/daniel-russo-31ab896b')
+          ('/danielprusso', 'https://www.linkedin.com/in/daniel-russo-31ab896b')
           ]
 
 DEFAULT_PAGINATION = 8
 
 # Uncomment following line if you want document-relative URLs when developing
 #RELATIVE_URLS = True
+
+# Support for IPython Notebooks
+MARKUP = ('md', 'ipynb')
+
+PLUGIN_PATH = './plugins'
+PLUGINS = ['ipynb.markup']
