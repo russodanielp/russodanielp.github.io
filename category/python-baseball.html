@@ -25,7 +25,7 @@
 
             <aside id="featured" class="body">
                 <article>
-                    <h1 class="entry-title"><a href="https://russodanielp.github.io/2015-mlb-batting-and-pitching-2.html">2015 MLB Batting and Pitching 2</a></h1>
+                    <h1 class="entry-title"><a href="https://russodanielp.github.io/2015-mlb-batting-and-pitching-3.html">2015 MLB Batting and Pitching 3</a></h1>
 <footer class="post-info">
         <abbr class="published" title="2016-02-27T15:48:00-05:00">
                 Published: Sat 27 February 2016
@@ -78,6 +78,61 @@
 <span class="n">pitch</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;leagues_MLB_2015_teams_standard_pitching.csv&#39;</span><span class="p">,</span> <span class="n">index_col</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
 <span class="n">bat</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">bat</span><span class="o">.</span><span class="n">index</span><span class="p">[[</span><span class="mi">30</span><span class="p">,</span> <span class="mi">31</span><span class="p">,</span> <span class="mi">32</span><span class="p">]],</span> <span class="n">inplace</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
 <span class="n">pitch</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">pitch</span><span class="o">.</span><span class="n">index</span><span class="p">[[</span><span class="mi">30</span><span class="p">,</span> <span class="mi">31</span><span class="p">,</span> <span class="mi">32</span><span class="p">]],</span> <span class="n">inplace</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+</pre></div>
+
+
+<div class="highlight"><pre><span></span><span class="n">fig</span> <span class="o">=</span> <span class="n">figure</span><span class="p">(</span><span class="n">x_range</span><span class="o">=</span><span class="n">bat</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">tolist</span><span class="p">(),</span> <span class="n">y_range</span><span class="o">=</span><span class="p">[</span><span class="mf">0.2</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">],</span> 
+             <span class="n">height</span><span class="o">=</span><span class="mi">700</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mi">700</span><span class="p">,</span> <span class="n">tools</span> <span class="o">=</span><span class="s2">&quot;resize&quot;</span><span class="p">,</span>
+             <span class="n">title</span><span class="o">=</span><span class="s2">&quot;MLB Batting&quot;</span><span class="p">)</span>
+
+
+
+<span class="n">fig</span><span class="o">.</span><span class="n">line</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">bat</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">tolist</span><span class="p">(),</span> <span class="n">y</span><span class="o">=</span><span class="n">bat</span><span class="p">[</span><span class="s1">&#39;BA&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">float</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">(),</span>
+            <span class="n">line_color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">,</span> <span class="n">legend</span><span class="o">=</span><span class="s2">&quot;League AVG&quot;</span>
+           <span class="p">)</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">line</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">bat</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">tolist</span><span class="p">(),</span> <span class="n">y</span><span class="o">=</span><span class="n">bat</span><span class="p">[</span><span class="s1">&#39;BA&#39;</span><span class="p">],</span>
+            <span class="n">line_color</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">,</span> <span class="n">line_dash</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">4</span><span class="p">],</span> <span class="n">legend</span><span class="o">=</span><span class="s2">&quot;AVG.&quot;</span><span class="p">,</span> 
+            <span class="n">line_alpha</span><span class="o">=</span><span class="mf">0.8</span>
+           <span class="p">)</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">circle</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">bat</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">tolist</span><span class="p">(),</span> <span class="n">y</span><span class="o">=</span><span class="n">bat</span><span class="p">[</span><span class="s1">&#39;BA&#39;</span><span class="p">],</span> <span class="n">size</span><span class="o">=</span><span class="mi">12</span><span class="p">,</span> 
+            <span class="n">fill_color</span><span class="o">=</span><span class="p">[</span><span class="n">df</span><span class="o">.</span><span class="n">Colors</span><span class="p">[</span><span class="n">tm</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span> <span class="k">for</span> <span class="n">tm</span> <span class="ow">in</span> <span class="n">bat</span><span class="o">.</span><span class="n">index</span><span class="p">],</span>
+            <span class="n">line_color</span><span class="o">=</span><span class="p">[</span><span class="n">df</span><span class="o">.</span><span class="n">Colors</span><span class="p">[</span><span class="n">tm</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span> <span class="k">for</span> <span class="n">tm</span> <span class="ow">in</span> <span class="n">bat</span><span class="o">.</span><span class="n">index</span><span class="p">],</span>
+            <span class="n">fill_alpha</span><span class="o">=</span><span class="mf">0.8</span><span class="p">,</span> <span class="n">line_alpha</span><span class="o">=</span><span class="mf">0.8</span>
+           <span class="p">)</span>
+
+
+<span class="n">fig</span><span class="o">.</span><span class="n">line</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">bat</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">tolist</span><span class="p">(),</span> <span class="n">y</span><span class="o">=</span><span class="n">bat</span><span class="p">[</span><span class="s1">&#39;OBP&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">float</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">(),</span>
+            <span class="n">line_color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span>
+           <span class="p">)</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">line</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">bat</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">tolist</span><span class="p">(),</span> <span class="n">y</span><span class="o">=</span><span class="n">bat</span><span class="p">[</span><span class="s1">&#39;OBP&#39;</span><span class="p">],</span>
+            <span class="n">line_color</span><span class="o">=</span><span class="s1">&#39;grey&#39;</span><span class="p">,</span> <span class="n">line_dash</span><span class="o">=</span><span class="p">[</span><span class="mi">4</span><span class="p">,</span><span class="mi">8</span><span class="p">],</span> <span class="n">legend</span><span class="o">=</span><span class="s2">&quot;OBP&quot;</span><span class="p">,</span> 
+            <span class="n">line_width</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">line_alpha</span><span class="o">=</span><span class="mf">0.8</span>
+           <span class="p">)</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">circle</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">bat</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">tolist</span><span class="p">(),</span> <span class="n">y</span><span class="o">=</span><span class="n">bat</span><span class="p">[</span><span class="s1">&#39;OBP&#39;</span><span class="p">],</span> <span class="n">size</span><span class="o">=</span><span class="mi">12</span><span class="p">,</span> 
+            <span class="n">fill_color</span><span class="o">=</span><span class="p">[</span><span class="n">df</span><span class="o">.</span><span class="n">Colors</span><span class="p">[</span><span class="n">tm</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span> <span class="k">for</span> <span class="n">tm</span> <span class="ow">in</span> <span class="n">bat</span><span class="o">.</span><span class="n">index</span><span class="p">],</span>
+            <span class="n">line_color</span><span class="o">=</span><span class="p">[</span><span class="n">df</span><span class="o">.</span><span class="n">Colors</span><span class="p">[</span><span class="n">tm</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span> <span class="k">for</span> <span class="n">tm</span> <span class="ow">in</span> <span class="n">bat</span><span class="o">.</span><span class="n">index</span><span class="p">],</span>
+            <span class="n">fill_alpha</span><span class="o">=</span><span class="mf">0.8</span><span class="p">,</span> <span class="n">line_alpha</span><span class="o">=</span><span class="mf">0.8</span>
+           <span class="p">)</span>
+
+
+<span class="n">fig</span><span class="o">.</span><span class="n">line</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">bat</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">tolist</span><span class="p">(),</span> <span class="n">y</span><span class="o">=</span><span class="n">bat</span><span class="p">[</span><span class="s1">&#39;SLG&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">float</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">(),</span>
+            <span class="n">line_color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span>
+           <span class="p">)</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">line</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">bat</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">tolist</span><span class="p">(),</span> <span class="n">y</span><span class="o">=</span><span class="n">bat</span><span class="p">[</span><span class="s1">&#39;SLG&#39;</span><span class="p">],</span>
+            <span class="n">line_color</span><span class="o">=</span><span class="s1">&#39;blue&#39;</span><span class="p">,</span> <span class="n">line_dash</span><span class="o">=</span><span class="p">[</span><span class="mi">4</span><span class="p">,</span><span class="mi">4</span><span class="p">],</span> <span class="n">legend</span><span class="o">=</span><span class="s2">&quot;SLG&quot;</span><span class="p">,</span> <span class="n">line_alpha</span><span class="o">=</span><span class="mf">0.8</span>
+           <span class="p">)</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">circle</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">bat</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">tolist</span><span class="p">(),</span> <span class="n">y</span><span class="o">=</span><span class="n">bat</span><span class="p">[</span><span class="s1">&#39;SLG&#39;</span><span class="p">],</span> <span class="n">size</span><span class="o">=</span><span class="mi">12</span><span class="p">,</span> 
+            <span class="n">fill_color</span><span class="o">=</span><span class="p">[</span><span class="n">df</span><span class="o">.</span><span class="n">Colors</span><span class="p">[</span><span class="n">tm</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span> <span class="k">for</span> <span class="n">tm</span> <span class="ow">in</span> <span class="n">bat</span><span class="o">.</span><span class="n">index</span><span class="p">],</span>
+            <span class="n">line_color</span><span class="o">=</span><span class="p">[</span><span class="n">df</span><span class="o">.</span><span class="n">Colors</span><span class="p">[</span><span class="n">tm</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span> <span class="k">for</span> <span class="n">tm</span> <span class="ow">in</span> <span class="n">bat</span><span class="o">.</span><span class="n">index</span><span class="p">],</span>
+            <span class="n">fill_alpha</span><span class="o">=</span><span class="mf">0.8</span><span class="p">,</span> <span class="n">line_alpha</span><span class="o">=</span><span class="mf">0.8</span>
+           <span class="p">)</span>
+
+
+<span class="n">fig</span><span class="o">.</span><span class="n">xaxis</span><span class="o">.</span><span class="n">major_label_orientation</span> <span class="o">=</span> <span class="mf">3.14</span><span class="o">/</span><span class="mi">4</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">legend</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">orientation</span> <span class="o">=</span> <span class="s2">&quot;top_left&quot;</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">background_fill</span> <span class="o">=</span> <span class="s2">&quot;beige&quot;</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">grid</span><span class="o">.</span><span class="n">grid_line_color</span> <span class="o">=</span> <span class="bp">None</span>
+<span class="n">show</span><span class="p">(</span><span class="n">fig</span><span class="p">)</span>
 </pre></div>
 
 
@@ -304,7 +359,7 @@
 
 
 
-wzxhzdk:2
+wzxhzdk:3
 
 
 
@@ -335,7 +390,7 @@
 
 
 
-wzxhzdk:3
+wzxhzdk:4
 
 
 
@@ -366,7 +421,7 @@
 
 
 
-wzxhzdk:4                </article>
+wzxhzdk:5                </article>
             </aside><!-- /#featured -->
         <section id="extras" class="body">
                 <div class="blogroll">
