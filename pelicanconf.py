@@ -36,7 +36,9 @@ DEFAULT_PAGINATION = 8
 #RELATIVE_URLS = True
 
 # Support for IPython Notebooks
-MARKUP = ('md', 'ipynb')
+MARKUP = ('md',)
 
-PLUGIN_PATH = './plugins'
-PLUGINS = ['ipynb.markup']
+PLUGIN_PATHS = ['./plugins', "./custom_plugins_dir"]
+PLUGINS = ['liquid_tags.img', 'liquid_tags.video',
+           'liquid_tags.youtube', 'liquid_tags.vimeo',
+           'liquid_tags.include_code', 'liquid_tags.notebook']

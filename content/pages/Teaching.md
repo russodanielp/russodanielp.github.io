@@ -16,5 +16,6 @@ _Microbiology and It's Applications Lab_ __50:120:212__
 
 _General Biology Lab_ __50:120:107__  
 
-
 Guest Lecturer, "Protein Structures", _Biochemistry I_ __56:115:511__
+
+Guest Lecturer, "PubChem: Ushering Chemistry into 'Big Data'", _Cheminformatics_ __56:121:555__

@@ -1,7 +1,7 @@
 import os
 import re
 
-from liquid_tags.mdx_liquid_tags import LiquidTags
+from mdx_liquid_tags import LiquidTags
 
 from .core import get_html_from_filepath, fix_css
 
