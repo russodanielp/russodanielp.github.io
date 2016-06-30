@@ -1,3 +1,4 @@
+Title: Curriculum Vitae
 
 ---
 ### Daniel P. Russo, M.Sc.
@@ -91,10 +92,14 @@ Division of Chemical Information, Boston, MA.
 > 1\. __Russo D P__, Kim M T, Zhu H,  Quantitative structure activity relationship modeling of serotonin 
 type-6 receptor antagonists.  _Presentation_. Rutgers-Camden Biology Spring Seminar, Camden, 2013.  
 
-### Memberships and committees
+### Memberships, panels, and committees
 
+> - March 31<sup>st</sup>, 2016: "Admitted Students Day" (Panelist) hosted by Rutgers University, Camden, NJ
+> - October 8<sup>th</sup>-9<sup>th</sup>, 2015: "Good Read-Across Practices Workshop" (Panelist) hosted by the Johns Hopkins Center for Alternatives to Animal Testing, Baltimore, MD
 > - 2015-Present: Center for Computational & Integrative Biology Journal Club (Co-founder, Organizer)
-> - 2015-Present: American Chemical Society
+> - 2015-Present: American Chemical Society (Member)
+> - 2015: _The Journal of Biological Sciences_ at Rutgers Camden (Student Editor)
+
 
 ### Awards and supporting information
 
