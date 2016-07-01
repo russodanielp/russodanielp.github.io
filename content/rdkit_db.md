@@ -7,4 +7,4 @@ Authors: Daniel P. Russo
 Summary: Exploring DrugBank using RDKit.
 
 
-{% notebook C:\Users\Daniel\Documents\Misc\blogs\rdkit_db\rdkit_db.ipynb %}
+{% notebook C:\Users\Daniel\Documents\ghpages\blogs\rdkit_db\rdkit_db.ipynb %}
