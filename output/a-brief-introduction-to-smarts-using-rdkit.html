@@ -95,7 +95,7 @@
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Using a set of "character logic" we can search for strings, or substrings, that meet some predefined criterion.  A full set of examples of regular expression including character meanings can be found in the <a href="https://docs.python.org/3/library/re.html">python docs</a>.</p>
-<p>SMARTS allows us to do the same thing except with with molecules.  Following the rules of <a href="https://en.wikipedia.org/wiki/Simplified_molecular-input_line-entry_system">SMILES</a> and by using reserved characters, SMARTS gives us to identify molecules containing specific features.  Here is a list of some common SMARTS characters.</p>
+<p>SMARTS allows us to do the same thing except with molecules.  Following the rules of <a href="https://en.wikipedia.org/wiki/Simplified_molecular-input_line-entry_system">SMILES</a> and by using reserved characters, SMARTS gives us the ability to identify molecules containing specific features.  Here is a list of some common SMARTS characters.</p>
 
 </div>
 </div>
@@ -1099,7 +1099,7 @@
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Looking more closely at the SMARTS string, <code>[X4;H3][X3;H0]</code>, we describe two atoms (everything between <code>[]</code>), where we are saying the first atom must have four total connections <code>X4</code> AND (using the symbol <code>;</code>) must be attached to three hydrogens, <code>H3</code>.  Similarly, the second atom, <code>[X3;H0]</code> hits any atom that that has three total connections with no hydrogen.  We can see our second atom has three connections and no hydrogen due to the doubly-bonded oxygen.</p>
-<p>However, this is a very specific query.  This isn't going to hit all aliphatic carbons.  Fortunately, there are easier ways to go about this in SMARTS.  Let's look at the SMARTS query we were usig before but defined by RDKit.</p>
+<p>However, this is a very specific query.  This isn't going to hit all aliphatic carbons.  Fortunately, there are easier ways to go about this in SMARTS.  Let's look at the SMARTS query we were using before but how RDKit outputs it.</p>
 
 </div>
 </div>
@@ -1139,7 +1139,7 @@
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>This looks slightly different than our original query, <code>[X4;H3][X3;H0]</code>, namely with the three characters seperating our two atoms, <code>-,:</code>.  Since, we did not explicitly designate a bond between the two atoms RDKit assumed we dont care if the bond is a single bond (<code>-</code>) OR (<code>,</code>) an aromatic bond (<code>:</code>), hence the characters between our atoms.  Bond types can also be searched with characters for single (<code>-</code>), double (<code>=</code>), triple (<code>#</code>), aromatic (<code>:</code>), ring bond (<code>@</code>), or any (<code>~</code>).</p>
-<p>So we could make our original query more specific like so: <code>[#6]!:[#6]</code>.  Any atom with atomic number 6 (i.e., carbon) connected by a bond that is not (<code>!</code>) aromatic.  Lets find all aliphatic (non-aromatic) carbon atoms in our original small data set.</p>
+<p>So we could make our original query more appropriate like so: <code>[#6]!:[#6]</code>.  Any atom with atomic number 6 (i.e., carbon) connected by a bond that is not (<code>!</code>) aromatic.  Let's find all aliphatic (non-aromatic) carbon atoms in our original small data set.</p>
 
 </div>
 </div>
