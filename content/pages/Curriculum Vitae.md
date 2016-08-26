@@ -72,7 +72,7 @@ __Refereed Journals__
 
 __Book Chapters__
 
-> 1\. __Russo Daniel P__ and Zhu H. Accessing the High-Throughput Screening Data Landscape. In: _High-Throughput Screening Assays in Toxicology_ (by Zhu, H and Xia, M; Editors)_ Chapter 16, pgs. 153-159. Springer New York, 2015.  ISBN: 978-1-4939-6344-7.
+> 1\. __Russo D P__ and Zhu H. Accessing the High-Throughput Screening Data Landscape. In: _High-Throughput Screening Assays in Toxicology_ (by Zhu, H and Xia, M; Editors)_ Chapter 16, pgs. 153-159. Springer New York, 2015.  ISBN: 978-1-4939-6344-7.
 
 ### Presentations
 
