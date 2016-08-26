@@ -48,6 +48,8 @@ Guest Lecturer, "PubChem: Ushering Chemistry into 'Big Data'", _Cheminformatics_
 
 ### Publications
 
+__Refereed Journals__
+
 > 8\. Xiang J, Zhang Z, Mu Y, Xu X, Guo S, Liu Y, __Russo D P__, Zhu H, Yan B, Bai X. _Discovery of novel tricyclic thiazepine derivatives as anti-drug-resistant cancer agents by combining diversity-oriented synthesis and converging screening approach_. ACS Combinatorial Science. DOI: 10.1021/acscombsci.6b00010
 
 
@@ -68,7 +70,9 @@ Guest Lecturer, "PubChem: Ushering Chemistry into 'Big Data'", _Cheminformatics_
 
 > 1\. Kotchoni, S O, Noumavo, P A, Adjanohoun A, __Russo D P__, Dell Angelo J, Gachomo E W, Baba-Moussa L. _A simple and efficient seed-based approach to induce callus production from B73 maize genotype_. American Journal of Molecular Biology. 2, 380-385.
 
+__Book Chapters__
 
+> 1\. __Russo Daniel P__ and Zhu H. Accessing the High-Throughput Screening Data Landscape. In: _High-Throughput Screening Assays in Toxicology_ (by Zhu, H and Xia, M; Editors)_ Chapter 16, pgs. 153-159. Springer New York, 2015.  ISBN: 978-1-4939-6344-7.
 
 ### Presentations
 
