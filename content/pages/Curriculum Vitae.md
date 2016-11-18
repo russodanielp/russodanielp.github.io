@@ -35,7 +35,7 @@ __2004 - 2009__
 __2012 - 2016__ 
 - Teaching Assistant, __Rutgers, The State University of New Jersey__
 
-> __Courses Taught__  
+> __Rutgers Univeristy - Camden, NJ__  
 _Programming Fundamentals Lab_ __50:198:111__  
 _Object-Oriented Programming Recitation_ __50:198:113__   
 _Principals and Practices of Biological Research_ __50:120:295__  
@@ -52,6 +52,9 @@ Guest Lecture, "PubChem: Ushering Chemistry into 'Big Data'", _Cheminformatics_ 
 ### Publications ###
 
 __Refereed Journals__
+
+> 9\. __Russo D P__, Kim M T, Wang W, Pinolini D, CIIPro: a new read-across portal to fill data gaps 
+using public large-scale chemical and biological data
 
 > 8\. Xiang J, Zhang Z, Mu Y, Xu X, Guo S, Liu Y, __Russo D P__, Zhu H, Yan B, Bai X. _Discovery of novel tricyclic thiazepine derivatives as anti-drug-resistant cancer agents by combining diversity-oriented synthesis and converging screening approach_. ACS Combinatorial Science. DOI: 10.1021/acscombsci.6b00010
 

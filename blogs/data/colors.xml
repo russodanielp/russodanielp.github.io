@@ -1,0 +1,192 @@
+<?xml version="1.0"?>
+<data>
+<color-palette name="Cincinnati Reds" type="regular" >Cincinnati Reds
+            <abbr>CIN</abbr>
+			<color>#FF0028</color>
+			<color>#000000</color>
+			<color>#FFFFFF</color>
+		</color-palette>
+		<color-palette name="Arizona Diamondbacks" type="regular" >Arizona Diamondbacks
+            <abbr>ARI</abbr>
+			<color>#A71930</color>
+			<color>#E3D4AD</color>
+			<color>#000000</color>
+			<color>#FFFFFF</color>
+		</color-palette>
+		<color-palette name="Atlanta Braves" type="regular" >Atlanta Braves
+            <abbr>ATL</abbr>
+			<color>#FFFFFF</color>
+			<color>#13274F</color>
+			<color>#CE1141</color>
+		</color-palette>
+		<color-palette name="Chicago Cubs" type="regular" >Chicago Cubs
+            <abbr>CHC</abbr>
+			<color>#0E3386</color>
+			<color>#CC3433</color>
+			<color>#FFFFFF</color>
+		</color-palette>
+		<color-palette name="Colorado Rockies" type="regular" >Colorado Rockies
+            <abbr>COL</abbr>
+			<color>#333366</color>
+			<color>#C4CED4</color>
+			<color>#FFFFFF</color>
+			<color>#000000</color>
+		</color-palette>
+		<color-palette name="Los Angeles Dodgers" type="regular" >Los Angeles Dodgers
+            <abbr>LAD</abbr>
+			<color>#FFFFFF</color>
+			<color>#005A9C</color>
+		</color-palette>
+		<color-palette name="Miami Marlins" type="regular" >Miami Marlins
+            <abbr>MIA</abbr>
+			<color>#FFFFFF</color>
+			<color>#000000</color>
+			<color>#F9423A</color>
+			<color>#FFD100</color>
+			<color>#0077C8</color>
+		</color-palette>
+		<color-palette name="Milwaukee Brewers" type="regular" >Milwaukee Brewers
+            <abbr>MIL</abbr>
+			<color>#FFFFFF</color>
+			<color>#182B49</color>
+			<color>#92754C</color>
+		</color-palette>
+		<color-palette name="New York Mets" type="regular" >New York Mets
+            <abbr>NYM</abbr>
+			<color>#FFFFFF</color>
+			<color>#002D72</color>
+			<color>#FF5910</color>
+		</color-palette>
+		<color-palette name="Pittsburgh Pirates" type="regular" >Pittsburgh Pirates
+            <abbr>PIT</abbr>
+			<color>#FFFFFF</color>
+			<color>#000000</color>
+			<color>#FDB827</color>
+		</color-palette>
+		<color-palette name="Philadelphia Phillies" type="regular" >Philadelphia Phillies
+            <abbr>PHI</abbr>
+			<color>#FFFFFF</color>
+			<color>#BA0C2F</color>
+			<color>#003087</color>
+		</color-palette>
+		<color-palette name="San Diego Padres" type="regular" >San Diego Padres
+            <abbr>SDP</abbr>
+			<color>#FFFFFF</color>
+			<color>#041E42</color>
+			<color>#B3A369</color>
+		</color-palette>
+		<color-palette name="San Francisco Giants" type="regular" >San Francisco Giants
+            <abbr>SFG</abbr>
+			<color>#000000</color>
+			<color>#FD5A1E</color>
+			<color>#E6D8AF</color>
+		</color-palette>
+		<color-palette name="St. Louis Cardinals" type="regular" >St. Louis Cardinals
+            <abbr>STL</abbr>
+			<color>#FFFFFF</color>
+			<color>#C41E3A</color>
+			<color>#000066</color>
+			<color>#FEDB00</color>
+		</color-palette>
+		<color-palette name="Washington Nationals" type="regular" >Washington Nationals
+            <abbr>WSN</abbr>
+			<color>#FFFFFF</color>
+			<color>#AB0003</color>
+			<color>#11225B</color>
+		</color-palette>
+		<color-palette name="Baltimore Orioles" type="regular" >Baltimore Orioles
+            <abbr>BAL</abbr>
+			<color>#000000</color>
+			<color>#ED4C09</color>
+			<color>#FFFFFF</color>
+		</color-palette>
+		<color-palette name="Boston Red Sox" type="regular" >Boston Red Sox
+            <abbr>BOS</abbr>
+			<color>#BD3039</color>
+			<color>#0D2B56</color>
+			<color>#FFFFFF</color>
+		</color-palette>
+		<color-palette name="New York Yankees" type="regular" >New York Yankees
+            <abbr>NYY</abbr>
+			<color>#132448</color>
+			<color>#CCCCCC</color>
+			<color>#FFFFFF</color>
+		</color-palette>
+		<color-palette name="Tampa Bay Rays" type="regular" >Tampa Bay Rays
+            <abbr>TBR</abbr>
+			<color>#092C5C</color>
+			<color>#8FBCE6</color>
+			<color>#FFFFFF</color>
+			<color>#F5D130</color>
+		</color-palette>
+		<color-palette name="Toronto Blue Jays" type="regular" >Toronto Blue Jays
+            <abbr>TOR</abbr>
+			<color>#134A8E</color>
+			<color>#1D2D5C</color>
+			<color>#FFFFFF</color>
+			<color>#E82A1E</color>
+		</color-palette>
+		<color-palette name="Chicago White Sox" type="regular" >Chicago White Sox
+            <abbr>CHW</abbr>
+			<color>#000000</color>
+			<color>#CCCCCC</color>
+			<color>#FFFFFF</color>
+		</color-palette>
+		<color-palette name="Cleveland Indians" type="regular" >Cleveland Indians
+            <abbr>CLE</abbr>
+			<color>#002B5C</color>
+			<color>#E31937</color>
+			<color>#FFFFFF</color>
+		</color-palette>
+		<color-palette name="Detroit Tigers" type="regular" >Detroit Tigers
+            <abbr>DET</abbr>
+			<color>#0C2C56</color>
+			<color>#FF6600</color>
+			<color>#FFFFFF</color>
+		</color-palette>
+		<color-palette name="Kansas City Royals" type="regular" >Kansas City Royals
+            <abbr>KCR</abbr>
+			<color>#004687</color>
+			<color>#74B4FA</color>
+			<color>#C09A5B</color>
+			<color>#FFFFFF</color>
+		</color-palette>
+		<color-palette name="Minnesota Twins" type="regular" >Minnesota Twins
+            <abbr>MIN</abbr>
+			<color>#042462</color>
+			<color>#D31145</color>
+			<color>#CFAB7A</color>
+			<color>#FFFFFF</color>
+		</color-palette>
+		<color-palette name="Houston Astros" type="regular" >Houston Astros
+            <abbr>HOU</abbr>
+			<color>#002D62</color>
+			<color>#EB6E1F</color>
+			<color>#FFFFFF</color>
+		</color-palette>
+		<color-palette name="Los Angeles Angels of Anaheim" type="regular" >Los Angeles Angels of Anaheim
+            <abbr>LAA</abbr>
+			<color>#BA0021</color>
+			<color>#003263</color>
+			<color>#FFFFFF</color>
+			<color>#C4CED4</color>
+		</color-palette>
+		<color-palette name="Oakland Athletics" type="regular" >Oakland Athletics
+            <abbr>OAK</abbr>
+			<color>#003831</color>
+			<color>#EFB21E</color>
+		</color-palette>
+		<color-palette name="Seattle Mariners" type="regular" >Seattle Mariners
+            <abbr>SEA</abbr>
+			<color>#002B5C</color>
+			<color>#006C67</color>
+			<color>#C4CED4</color>
+			<color>#FFFFFF</color>
+		</color-palette>
+		<color-palette name="Texas Rangers" type="regular" >Texas Rangers
+            <abbr>TEX</abbr>
+			<color>#003278</color>
+			<color>#C0111F</color>
+			<color>#FFFFFF</color>
+		</color-palette>
+</data>
