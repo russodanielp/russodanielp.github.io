@@ -38,7 +38,9 @@ DEFAULT_PAGINATION = 8
 # Support for IPython Notebooks
 MARKUP = ('md',)
 
-PLUGIN_PATHS = ['./plugins', "./custom_plugins_dir"]
+PLUGIN_PATHS = ['./plugins', "./custom_plugins_dir", "./custom_plugins_dir/render_math"]
 PLUGINS = ['liquid_tags.img', 'liquid_tags.video',
            'liquid_tags.youtube', 'liquid_tags.vimeo',
-           'liquid_tags.include_code', 'liquid_tags.notebook']
+           'liquid_tags.include_code', 'liquid_tags.notebook',
+           'render_math'
+           ]
