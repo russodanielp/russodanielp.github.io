@@ -1,5 +1,5 @@
 Title: Creating a Color Gradient Using a Bezier curve 
-Date: 2016-11-18 5:48 PM  
+Date: 2016-11-19 5:48 PM  
 Category: Python  
 Tags: python
 Slug:  
