@@ -1,6 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*- #
 from __future__ import unicode_literals
+import os
 
 AUTHOR = u'Daniel P Russo'
 SITENAME = u'Drug Discovery in Python'
@@ -11,6 +12,10 @@ PATH = 'content'
 TIMEZONE = 'America/New_York'
 
 DEFAULT_LANG = u'en'
+
+print(os.getcwd())
+
+THEME = './themes/bootstrap'
 
 # Feed generation is usually not desired when developing
 FEED_ALL_ATOM = None
