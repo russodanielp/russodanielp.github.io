@@ -12,7 +12,7 @@
 
 # Research
 
-The research of Daniel P. Russo involes using computers and mathematics to solve problems in biology in chemistry.  Please refer to my [currivulum vitae](../../cv/Daniel_P_Russo_CV.pdf) for a full listing of research interests, publications, and presentations.  
+The research of Daniel P. Russo involves using computers and mathematics to solve problems in biology in chemistry.  Please reference this recent [currivulum vitae](../../cv/Daniel_P_Russo_CV.pdf) for a full listing of research interests, publications, and presentations.  
 
 ____
 
