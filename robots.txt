@@ -1,4 +1,4 @@
-Sitemap: https://www.danielprusso.com/sitemapindex.xml
+Sitemap: http://www.danielprusso.com/sitemapindex.xml
 
 User-Agent: *
 Host: www.danielprusso.com

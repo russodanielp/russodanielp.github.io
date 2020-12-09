@@ -12,11 +12,11 @@
 
 # Research
 
-The research of Daniel P. Russo involves using computers and mathematics to solve problems in biology in chemistry.  Please reference this recent [currivulum vitae](../../cv/Daniel_P_Russo_CV.pdf) for a full listing of research interests, publications, and presentations.  
+The research of Daniel P. Russo involves using computers and mathematics to solve problems in biology and chemistry.  Please refer to this recent [currivulum vitae](../../cv/Daniel_P_Russo_CV.pdf) for a full listing of research interests, publications, and presentations.  
 
 ____
 
-## [1] Using big data machine learning to model the bioglogical effects of pharmaceuticals and environmental compounds
+## Using big data and machine learning to model the bioglogical effects of pharmaceuticals and environmental compounds
 <center>
 <img src="/images/exposure.png" width="500" height="500"/>
 </center>
@@ -34,7 +34,7 @@ __Russo D P__, Zorn K M, Clark A M, Zhu H, Ekins S. _Comparing multiple machine 
 
 ____
 
-## [2] Modeling of complex molecules such as peptides and nanoparticles 
+## Modeling of complex molecules such as peptides and nanoparticles 
 <center>
 <img src="/images/nanoparticle.png" width=600/>
 </center>

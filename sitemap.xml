@@ -6,71 +6,71 @@
     xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
                         http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
  <url>
-  <loc>https://www.danielprusso.com/</loc>
-  <lastmod>2019-09-12T18:17:00Z</lastmod>
+  <loc>http://www.danielprusso.com/</loc>
+  <lastmod>2019-09-18T20:36:00Z</lastmod>
  </url>
  <url>
-  <loc>https://www.danielprusso.com/2016/</loc>
+  <loc>http://www.danielprusso.com/2016/</loc>
   <lastmod>2019-09-09T20:55:00Z</lastmod>
  </url>
  <url>
-  <loc>https://www.danielprusso.com/2017/</loc>
+  <loc>http://www.danielprusso.com/2017/</loc>
   <lastmod>2019-09-09T20:55:00Z</lastmod>
  </url>
  <url>
-  <loc>https://www.danielprusso.com/about/</loc>
+  <loc>http://www.danielprusso.com/2019/</loc>
+  <lastmod>2019-09-18T20:36:00Z</lastmod>
+ </url>
+ <url>
+  <loc>http://www.danielprusso.com/about/</loc>
   <lastmod>2019-09-12T12:53:00Z</lastmod>
  </url>
  <url>
-  <loc>https://www.danielprusso.com/archive.html</loc>
-  <lastmod>2019-09-12T18:51:00Z</lastmod>
+  <loc>http://www.danielprusso.com/archive.html</loc>
+  <lastmod>2020-12-09T19:29:00Z</lastmod>
  </url>
  <url>
-  <loc>https://www.danielprusso.com/blog/</loc>
+  <loc>http://www.danielprusso.com/blog/</loc>
+  <lastmod>2020-12-09T19:03:00Z</lastmod>
+ </url>
+ <url>
+  <loc>http://www.danielprusso.com/blog/2015-mlb-batting-and-pitching/</loc>
   <lastmod>2019-09-09T20:55:00Z</lastmod>
  </url>
  <url>
-  <loc>https://www.danielprusso.com/blog/2015-mlb-batting-and-pitching/</loc>
+  <loc>http://www.danielprusso.com/blog/a-brief-introduction-to-smarts/</loc>
   <lastmod>2019-09-09T20:55:00Z</lastmod>
  </url>
  <url>
-  <loc>https://www.danielprusso.com/blog/a-brief-introduction-to-smarts/</loc>
+  <loc>http://www.danielprusso.com/blog/home-team-advantage-in-baseball/</loc>
   <lastmod>2019-09-09T20:55:00Z</lastmod>
  </url>
  <url>
-  <loc>https://www.danielprusso.com/blog/bezier-curve/</loc>
+  <loc>http://www.danielprusso.com/blog/plotting-a-heatmap-with-a-dendrogram-using-bokeh/</loc>
   <lastmod>2019-09-09T20:55:00Z</lastmod>
  </url>
  <url>
-  <loc>https://www.danielprusso.com/blog/home-team-advantage-in-baseball/</loc>
+  <loc>http://www.danielprusso.com/categories/</loc>
   <lastmod>2019-09-09T20:55:00Z</lastmod>
  </url>
  <url>
-  <loc>https://www.danielprusso.com/blog/plotting-a-heatmap-with-a-dendrogram-using-bokeh/</loc>
-  <lastmod>2019-09-09T20:55:00Z</lastmod>
- </url>
- <url>
-  <loc>https://www.danielprusso.com/categories/</loc>
-  <lastmod>2019-09-09T20:55:00Z</lastmod>
- </url>
- <url>
-  <loc>https://www.danielprusso.com/contact/</loc>
+  <loc>http://www.danielprusso.com/contact/</loc>
   <lastmod>2019-09-12T16:35:00Z</lastmod>
  </url>
  <url>
-  <loc>https://www.danielprusso.com/galleries/</loc>
+  <loc>http://www.danielprusso.com/galleries/</loc>
   <lastmod>2019-09-09T20:55:00Z</lastmod>
  </url>
  <url>
-  <loc>https://www.danielprusso.com/listings/</loc>
+  <loc>http://www.danielprusso.com/listings/</loc>
   <lastmod>2019-09-09T20:55:00Z</lastmod>
  </url>
  <url>
-  <loc>https://www.danielprusso.com/research/</loc>
+  <loc>http://www.danielprusso.com/research/</loc>
   <lastmod>2019-09-12T12:47:00Z</lastmod>
  </url>
  <url>
-  <loc>https://www.danielprusso.com/software/</loc>
+  <loc>http://www.danielprusso.com/software/</loc>
   <lastmod>2019-09-12T18:17:00Z</lastmod>
  </url>
 </urlset>

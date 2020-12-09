@@ -12,13 +12,12 @@ og: http://ogp.me/ns# article: http://ogp.me/ns/article#
 <script src="https://kit.fontawesome.com/990cab5c0e.js"></script><meta name="theme-color" content="#00008b">
 <meta name="generator" content="Nikola (getnikola.com)">
 <link rel="alternate" type="application/rss+xml" title="RSS" href="../../rss.xml">
-<link rel="canonical" href="https://www.danielprusso.com/blog/bezier-curve/">
+<link rel="canonical" href="http://www.danielprusso.com/blog/bezier-curve/">
 <!--[if lt IE 9]><script src="../../assets/js/html5.js"></script><![endif]--><meta name="author" content="Daniel P. Russo">
-<link rel="prev" href="../plotting-a-heatmap-with-a-dendrogram-using-bokeh/" title="Plotting a Heatmap with a Dendrogram using Bokeh" type="text/html">
-<link rel="next" href="../home-team-advantage-in-baseball/" title="Home Team Advantage in Baseball" type="text/html">
+<meta name="robots" content="noindex">
 <meta property="og:site_name" content="Drug Discovery in Python">
 <meta property="og:title" content="Bezier Curve">
-<meta property="og:url" content="https://www.danielprusso.com/blog/bezier-curve/">
+<meta property="og:url" content="http://www.danielprusso.com/blog/bezier-curve/">
 <meta property="og:description" content="Molecule properties and activities are most often represented in continuous, real values (e.g., EC50, IC50, LD50, LogP, etc.).  Usually for graphs I convert these values into discrete classifications ">
 <meta property="og:type" content="article">
 <meta property="article:published_time" content="2016-11-19T17:48:26-04:00">
@@ -41,7 +40,7 @@ og: http://ogp.me/ns# article: http://ogp.me/ns/article#
     </div>
 </header><!-- Menubar --><nav class="navbar navbar-expand-md static-top mb-4 navbar-dark" style="background-color: rgb(85, 152, 253);"><div class="container my-blue">
 <!-- This keeps the margins nice -->
-        <a class="navbar-brand" href="https://www.danielprusso.com/">
+        <a class="navbar-brand" href="http://www.danielprusso.com/">
 
             <span id="blog-title">Drug Discovery in Python</span>
         </a>
@@ -102,7 +101,7 @@ Apparently, none of the plotting packages (Bokeh, matplotlib, Plotly, seaborn) h
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In [36]:</div>
+<div class="prompt input_prompt">In [3]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">plotly.plotly</span> <span class="k">as</span> <span class="nn">py</span>
@@ -151,14 +150,38 @@ Apparently, none of the plotting packages (Bokeh, matplotlib, Plotly, seaborn) h
 
 <div class="output_area">
 
-    <div class="prompt output_prompt">Out[36]:</div>
+    <div class="prompt"></div>
 
 
+<div class="output_subarea output_text output_error">
+<pre>
+<span class="ansi-red-intense-fg ansi-bold">---------------------------------------------------------------------------</span>
+<span class="ansi-red-intense-fg ansi-bold">ImportError</span>                               Traceback (most recent call last)
+<span class="ansi-green-intense-fg ansi-bold">&lt;ipython-input-3-4d18efb26086&gt;</span> in <span class="ansi-cyan-fg">&lt;module&gt;</span>
+<span class="ansi-green-intense-fg ansi-bold">----&gt; 1</span><span class="ansi-yellow-intense-fg ansi-bold"> </span><span class="ansi-green-intense-fg ansi-bold">import</span> plotly<span class="ansi-yellow-intense-fg ansi-bold">.</span>plotly <span class="ansi-green-intense-fg ansi-bold">as</span> py
+<span class="ansi-green-fg">      2</span> <span class="ansi-green-intense-fg ansi-bold">import</span> plotly<span class="ansi-yellow-intense-fg ansi-bold">.</span>graph_objs <span class="ansi-green-intense-fg ansi-bold">as</span> go
+<span class="ansi-green-fg">      3</span> 
+<span class="ansi-green-fg">      4</span> 
+<span class="ansi-green-fg">      5</span> red <span class="ansi-yellow-intense-fg ansi-bold">=</span> <span class="ansi-yellow-intense-fg ansi-bold">[</span><span class="ansi-cyan-intense-fg ansi-bold">255</span><span class="ansi-yellow-intense-fg ansi-bold">,</span> <span class="ansi-cyan-intense-fg ansi-bold">0</span><span class="ansi-yellow-intense-fg ansi-bold">,</span> <span class="ansi-cyan-intense-fg ansi-bold">0</span><span class="ansi-yellow-intense-fg ansi-bold">]</span>
 
-<div class="output_html rendered_html output_subarea output_execute_result">
-<iframe id="igraph" scrolling="no" style="border:none;" seamless="seamless" src="https://plot.ly/~russodanielp/36.embed" height="525px" width="100%"></iframe>
+<span class="ansi-green-intense-fg ansi-bold">c:\users\daniel\anaconda3\envs\newwebsite\lib\site-packages\plotly\plotly\__init__.py</span> in <span class="ansi-cyan-fg">&lt;module&gt;</span>
+<span class="ansi-green-fg">      2</span> <span class="ansi-green-intense-fg ansi-bold">from</span> _plotly_future_ <span class="ansi-green-intense-fg ansi-bold">import</span> _chart_studio_error
+<span class="ansi-green-fg">      3</span> 
+<span class="ansi-green-intense-fg ansi-bold">----&gt; 4</span><span class="ansi-yellow-intense-fg ansi-bold"> </span>_chart_studio_error<span class="ansi-yellow-intense-fg ansi-bold">(</span><span class="ansi-blue-intense-fg ansi-bold">"plotly"</span><span class="ansi-yellow-intense-fg ansi-bold">)</span>
+
+<span class="ansi-green-intense-fg ansi-bold">c:\users\daniel\anaconda3\envs\newwebsite\lib\site-packages\_plotly_future_\__init__.py</span> in <span class="ansi-cyan-fg">_chart_studio_error</span><span class="ansi-blue-intense-fg ansi-bold">(submodule)</span>
+<span class="ansi-green-fg">     47</span> chart_studio<span class="ansi-yellow-intense-fg ansi-bold">.</span><span class="ansi-yellow-intense-fg ansi-bold">{</span>submodule<span class="ansi-yellow-intense-fg ansi-bold">}</span> module instead<span class="ansi-yellow-intense-fg ansi-bold">.</span>
+<span class="ansi-green-fg">     48</span> """.format(
+<span class="ansi-green-intense-fg ansi-bold">---&gt; 49</span><span class="ansi-yellow-intense-fg ansi-bold">             </span>submodule<span class="ansi-yellow-intense-fg ansi-bold">=</span>submodule
+<span class="ansi-green-fg">     50</span>         )
+<span class="ansi-green-fg">     51</span>     )
+
+<span class="ansi-red-intense-fg ansi-bold">ImportError</span>: 
+The plotly.plotly module is deprecated,
+please install the chart-studio package and use the
+chart_studio.plotly module instead. 
+</pre>
 </div>
-
 </div>
 
 </div>
@@ -396,7 +419,7 @@ $$ B(t) = b_{0,2}(t)[255, 0, 0] + b_{1,2}(t)[0, 0, 255] + b_{2,2}(t)[0, 255, 0] 
                     <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML" integrity="sha256-SDRP1VVYu+tgAGKhddBSl5+ezofHKZeI+OzxakbIe/Y=" crossorigin="anonymous"></script><script type="text/x-mathjax-config">
         MathJax.Hub.Config({tex2jax: {inlineMath: [['$latex ','$'], ['\\(','\\)']]}});
         </script></article><!--End of body content--><footer id="footer">
-            Contents © 2019         <a href="mailto:russodanielp@gmail.com">Daniel P. Russo</a> 
+            Contents © 2020         <a href="mailto:russodanielp@gmail.com">Daniel P. Russo</a> 
             
         </footer>
 </div>
