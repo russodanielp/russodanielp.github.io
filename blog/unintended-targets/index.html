@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html prefix="
+og: http://ogp.me/ns# article: http://ogp.me/ns/article#
+" lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Unintended Targets | Drug Discovery in Python</title>
+<link href="../../assets/css/all-nocdn.css" rel="stylesheet" type="text/css">
+<link href="../../assets/css/ipython.min.css" rel="stylesheet" type="text/css">
+<link href="../../assets/css/nikola_ipython.css" rel="stylesheet" type="text/css">
+<script src="https://kit.fontawesome.com/990cab5c0e.js"></script><meta name="theme-color" content="#00008b">
+<meta name="generator" content="Nikola (getnikola.com)">
+<link rel="alternate" type="application/rss+xml" title="RSS" href="../../rss.xml">
+<link rel="canonical" href="http://www.danielprusso.com/blog/unintended-targets/">
+<!--[if lt IE 9]><script src="../../assets/js/html5.js"></script><![endif]--><meta name="author" content="Daniel P. Russo">
+<meta name="robots" content="noindex">
+<meta property="og:site_name" content="Drug Discovery in Python">
+<meta property="og:title" content="Unintended Targets">
+<meta property="og:url" content="http://www.danielprusso.com/blog/unintended-targets/">
+<meta property="og:description" content="First let me say I realize this post's title makes it sound like it's a very predictable crime-thriller novel.  But it's not, I swear. 
+A lot of my friends and family are usually shocked when I tell t">
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2019-09-18T15:49:08-04:00">
+<link href="../../assets/css/custom.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+<a href="#content" class="sr-only sr-only-focusable">Skip to main content</a>
+
+<header class="container"><div class="row" style="height: 200px;">
+        <div class="col-md-3">
+            <img width="200px" height="200px" src="../../images/headshot_circle_website.png">
+</div>
+        <div class="col-md-9" style="top: 20%; position: relative; vertical-align: middle">              
+                <p style="color:#999;font-size: 1.0em;">
+                    Daniel Russo is a computational biologist, biochemist, and toxicologist.  His research includes developing computational models for complex biological
+                     processes as alternatives to traditional <i>in vivo</i> animal tests.  A native of southern New Jersey, he receieved his PhD in 
+                    Computational and Integrative Biology, as well as his M.S. and B.S. in Biology, from Rutgers University.
+                </p>
+        </div>
+    </div>
+</header><!-- Menubar --><nav class="navbar navbar-expand-md static-top mb-4 navbar-dark" style="background-color: rgb(85, 152, 253);"><div class="container my-blue">
+<!-- This keeps the margins nice -->
+        <a class="navbar-brand" href="http://www.danielprusso.com/">
+
+            <span id="blog-title">Drug Discovery in Python</span>
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#bs-navbar" aria-controls="bs-navbar" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="bs-navbar">
+            <ul class="navbar-nav mr-auto">
+<li class="nav-item">
+<a href="../../index.html" class="nav-link">Home</a>
+                </li>
+<li class="nav-item">
+<a href="../../research/index.html" class="nav-link">Research</a>
+                </li>
+<li class="nav-item">
+<a href="../index.html" class="nav-link">Blog</a>
+                </li>
+<li class="nav-item">
+<a href="../../software/index.html" class="nav-link">Software</a>
+                </li>
+<li class="nav-item">
+<a href="../../cv/Daniel_P_Russo_CV.pdf" class="nav-link">CV</a>
+                </li>
+<li class="nav-item">
+<a href="../../contact/index.html" class="nav-link">Contact</a>
+
+                
+            </li>
+</ul>
+<ul class="navbar-nav navbar-right"></ul>
+</div>
+<!-- /.navbar-collapse -->
+    </div>
+<!-- /.container -->
+</nav><!-- End of Menubar --><div class="container" id="content" role="main">
+
+    <div class="body-content">
+        <!--Body content-->
+        
+<article class="post-text storypage" itemscope="itemscope" itemtype="http://schema.org/Article"><header><h1 class="p-name entry-title" itemprop="headline name"><a href="." class="u-url">Unintended Targets</a></h1>
+
+        
+    </header><div class="e-content entry-content" itemprop="articleBody text">
+    <p>First let me say I realize this post's title makes it sound like it's a very predictable crime-thriller novel.  But it's not, I swear. </p>
+<p>A lot of my friends and family are usually shocked when I tell them that when a drug is approved, it's not always known how it works.  <a href="https://www.nature.com/articles/nm0410-347">While it certainly helps</a> increase a drugs' chances, the FDA does not require a formal understanding of a drug's mechanism of action for approval.  How could it? <!-- TEASER_END -->  There are certainly enough diseases we don't fully understand, how could it be expected to know how their therapy works? Indeed, the mechanisms of action of many drugs currently on the market are not really well-understood.  So much there's a (probably non exhaustive) <a href="https://en.wikipedia.org/wiki/Category:Drugs_with_unknown_mechanisms_of_action">list of such drugs on wikipedia</a>. One wildly common example is <a href="https://cen.acs.org/articles/92/i29/Does-Acetaminophen-Work-Researchers-Still.html">acetaminiophen</a>, whose mechanism has been debated pretty exhaustively (ironic that on the other hand its mechanism for liver toxicity is one of the most well-understood). </p>
+<p>While it's one thing to watch a drug progress its way through the pipeline without a solid understanding of whats going on biologically, it's another to find out what you thought was going on....wasn't the case at all.  This was the fate of 8 such drugs at different stages of the clinical progression as published by Science Translational Medicine last week.  These 8 drugs, all cancer drugs, all at different stages of the clincal pipeleine, were conclusively shown to not act in the way they were designed.  That is, each of the drugs were designed to act against a particular cancer target.  Well, not only were these drugs shown to have their effects via some other biological route.....the target they were supposedly targeting were also supposedly required for cancer cell survival.  But that just was not the case.  Instead, the authors of the study show cancer cell survival by </p>
+    </div>
+    
+</article><!--End of body content--><footer id="footer">
+            Contents © 2022         <a href="mailto:russodanielp@gmail.com">Daniel P. Russo</a> 
+            
+        </footer>
+</div>
+</div>
+
+        <script src="../../assets/js/all-nocdn.js"></script><script>
+    baguetteBox.run('div#content', {
+        ignoreClass: 'islink',
+        captions: function(element) {
+            return element.getElementsByTagName('img')[0].alt;
+    }});
+    </script>
+</body>
+</html>

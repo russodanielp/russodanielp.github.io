@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html prefix="
+og: http://ogp.me/ns# article: http://ogp.me/ns/article#
+" lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Bezier Curve | Drug Discovery in Python</title>
+<link href="../../assets/css/all-nocdn.css" rel="stylesheet" type="text/css">
+<link href="../../assets/css/ipython.min.css" rel="stylesheet" type="text/css">
+<link href="../../assets/css/nikola_ipython.css" rel="stylesheet" type="text/css">
+<script src="https://kit.fontawesome.com/990cab5c0e.js"></script><meta name="theme-color" content="#00008b">
+<meta name="generator" content="Nikola (getnikola.com)">
+<link rel="alternate" type="application/rss+xml" title="RSS" href="../../rss.xml">
+<link rel="canonical" href="http://www.danielprusso.com/blog/bezier-curve/">
+<!--[if lt IE 9]><script src="../../assets/js/html5.js"></script><![endif]--><meta name="author" content="Daniel P. Russo">
+<meta name="robots" content="noindex">
+<meta property="og:site_name" content="Drug Discovery in Python">
+<meta property="og:title" content="Bezier Curve">
+<meta property="og:url" content="http://www.danielprusso.com/blog/bezier-curve/">
+<meta property="og:description" content="Molecule properties and activities are most often represented in continuous, real values (e.g., EC50, IC50, LD50, LogP, etc.).  Usually for graphs I convert these values into discrete classifications ">
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2016-11-19T17:48:26-04:00">
+<link href="../../assets/css/custom.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+<a href="#content" class="sr-only sr-only-focusable">Skip to main content</a>
+
+<header class="container"><div class="row" style="height: 200px;">
+        <div class="col-md-3">
+            <img width="200px" height="200px" src="../../images/headshot_circle_website.png">
+</div>
+        <div class="col-md-9" style="top: 20%; position: relative; vertical-align: middle">              
+                <p style="color:#999;font-size: 1.0em;">
+                    Daniel Russo is a computational biologist, biochemist, and toxicologist.  His research includes developing computational models for complex biological
+                     processes as alternatives to traditional <i>in vivo</i> animal tests.  A native of southern New Jersey, he receieved his PhD in 
+                    Computational and Integrative Biology, as well as his M.S. and B.S. in Biology, from Rutgers University.
+                </p>
+        </div>
+    </div>
+</header><!-- Menubar --><nav class="navbar navbar-expand-md static-top mb-4 navbar-dark" style="background-color: rgb(85, 152, 253);"><div class="container my-blue">
+<!-- This keeps the margins nice -->
+        <a class="navbar-brand" href="http://www.danielprusso.com/">
+
+            <span id="blog-title">Drug Discovery in Python</span>
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#bs-navbar" aria-controls="bs-navbar" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="bs-navbar">
+            <ul class="navbar-nav mr-auto">
+<li class="nav-item">
+<a href="../../index.html" class="nav-link">Home</a>
+                </li>
+<li class="nav-item">
+<a href="../../research/index.html" class="nav-link">Research</a>
+                </li>
+<li class="nav-item">
+<a href="../index.html" class="nav-link">Blog</a>
+                </li>
+<li class="nav-item">
+<a href="../../software/index.html" class="nav-link">Software</a>
+                </li>
+<li class="nav-item">
+<a href="../../cv/Daniel_P_Russo_CV.pdf" class="nav-link">CV</a>
+                </li>
+<li class="nav-item">
+<a href="../../contact/index.html" class="nav-link">Contact</a>
+
+                
+            </li>
+</ul>
+<ul class="navbar-nav navbar-right"></ul>
+</div>
+<!-- /.navbar-collapse -->
+    </div>
+<!-- /.container -->
+</nav><!-- End of Menubar --><div class="container" id="content" role="main">
+
+    <div class="body-content">
+        <!--Body content-->
+        
+<article class="post-text storypage" itemscope="itemscope" itemtype="http://schema.org/Article"><header><h1 class="p-name entry-title" itemprop="headline name"><a href="." class="u-url">Bezier Curve</a></h1>
+
+        
+    </header><div class="e-content entry-content" itemprop="articleBody text">
+    <div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Molecule properties and activities are most often represented in continuous, real values (e.g., EC<sub>50</sub>, IC<sub>50</sub>, LD<sub>50</sub>, LogP, etc.).  Usually for graphs I convert these values into discrete classifications (e.g., active/inactive, toxic/non-toxic, soluble/insoluble, etc.).  When making a new graph I can represent a molecule's properties or activities using a set of a few colors (red for active, green for inactive, etc).  Pretty straight forward stuff.  However, if I wanted to color the compound's real value it'd be a little more difficult; I would need a color gradient.  For example, the most active compounds the color would be red and the least active would be green.  Molecules that fall inbetween would be a color that is a mix between red and green, more red for more active and vice versa.<br><!-- TEASER_END -->
+Apparently, none of the plotting packages (Bokeh, matplotlib, Plotly, seaborn) have this feature in their color libraries.  At least nothing I could find that allows you to set the colors from any two colors you choose.  Something similar I found was allowing you to import a "spectrum" of colors.  A discrete set of blues, for example, that go from dark blue to light blue.  However, this is not suitable for the infinite number of values that a LogP or LD<sub>50</sub> could take.</p>
+<p>I took to the internet and found a great <a href="http://bsou.io/posts/color-gradients-with-python">blog post</a> by Ben Southgate, which I'll sumarize here.  In it he lays down the framework how to use <a href="https://en.wikipedia.org/wiki/B%C3%A9zier_curve">Bezier curves</a> create a color gradient between any number of colors.  Unfortunately, the code he wrote generates a discrete set of color values, so in this post I'll change it up to accept any real value between $0$ and $1$.</p>
+<p>First, let's think about color as an RGB value, which is simply a vector in 3-dimensional space <code>[R, G, B]</code>, and let's plot that out.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [3]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">plotly.plotly</span> <span class="k">as</span> <span class="nn">py</span>
+<span class="kn">import</span> <span class="nn">plotly.graph_objs</span> <span class="k">as</span> <span class="nn">go</span>
+
+
+<span class="n">red</span> <span class="o">=</span> <span class="p">[</span><span class="mi">255</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span>
+<span class="n">green</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">255</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span>
+<span class="n">blue</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">255</span><span class="p">]</span>
+
+<span class="n">colors</span> <span class="o">=</span> <span class="p">[</span><span class="n">red</span><span class="p">,</span> <span class="n">green</span><span class="p">,</span> <span class="n">blue</span><span class="p">]</span>
+
+<span class="n">data</span> <span class="o">=</span> <span class="p">[]</span>
+
+<span class="k">for</span> <span class="n">color</span> <span class="ow">in</span> <span class="n">colors</span><span class="p">:</span>
+    <span class="n">data</span><span class="o">.</span><span class="n">append</span><span class="p">(</span>
+                    <span class="n">go</span><span class="o">.</span><span class="n">Scatter3d</span><span class="p">(</span>
+                                <span class="n">x</span><span class="o">=</span><span class="n">color</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span>
+                                <span class="n">y</span><span class="o">=</span><span class="n">color</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span>
+                                <span class="n">z</span><span class="o">=</span><span class="n">color</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span>
+                                <span class="n">mode</span><span class="o">=</span><span class="s1">'markers'</span><span class="p">,</span>
+                                <span class="n">marker</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span>
+                                            <span class="n">color</span><span class="o">=</span><span class="s1">'rgb(</span><span class="si">{0}</span><span class="s1">, </span><span class="si">{1}</span><span class="s1">, </span><span class="si">{2}</span><span class="s1">)'</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">color</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">color</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">color</span><span class="p">[</span><span class="mi">2</span><span class="p">]),</span>
+                                            <span class="n">size</span><span class="o">=</span><span class="mi">12</span><span class="p">,</span>
+                                            <span class="n">symbol</span><span class="o">=</span><span class="s1">'circle'</span><span class="p">,</span>
+                                            <span class="n">line</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span>
+                                            <span class="n">color</span><span class="o">=</span><span class="s1">'rgb(</span><span class="si">{0}</span><span class="s1">, </span><span class="si">{1}</span><span class="s1">, </span><span class="si">{2}</span><span class="s1">)'</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">color</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">color</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">color</span><span class="p">[</span><span class="mi">2</span><span class="p">]),</span>
+                                            <span class="n">width</span><span class="o">=</span><span class="mi">1</span>
+                                                    <span class="p">)</span>
+                                            <span class="p">)</span>
+                                    <span class="p">)</span>
+                        <span class="p">)</span>
+    
+<span class="n">layout</span> <span class="o">=</span> <span class="n">go</span><span class="o">.</span><span class="n">Layout</span><span class="p">(</span><span class="n">showlegend</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">fig</span> <span class="o">=</span> <span class="n">go</span><span class="o">.</span><span class="n">Figure</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">data</span><span class="p">,</span> <span class="n">layout</span><span class="o">=</span><span class="n">layout</span><span class="p">)</span>
+<span class="n">py</span><span class="o">.</span><span class="n">iplot</span><span class="p">(</span><span class="n">fig</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_text output_error">
+<pre>
+<span class="ansi-red-intense-fg ansi-bold">---------------------------------------------------------------------------</span>
+<span class="ansi-red-intense-fg ansi-bold">ImportError</span>                               Traceback (most recent call last)
+<span class="ansi-green-intense-fg ansi-bold">&lt;ipython-input-3-4d18efb26086&gt;</span> in <span class="ansi-cyan-fg">&lt;module&gt;</span>
+<span class="ansi-green-intense-fg ansi-bold">----&gt; 1</span><span class="ansi-yellow-intense-fg ansi-bold"> </span><span class="ansi-green-intense-fg ansi-bold">import</span> plotly<span class="ansi-yellow-intense-fg ansi-bold">.</span>plotly <span class="ansi-green-intense-fg ansi-bold">as</span> py
+<span class="ansi-green-fg">      2</span> <span class="ansi-green-intense-fg ansi-bold">import</span> plotly<span class="ansi-yellow-intense-fg ansi-bold">.</span>graph_objs <span class="ansi-green-intense-fg ansi-bold">as</span> go
+<span class="ansi-green-fg">      3</span> 
+<span class="ansi-green-fg">      4</span> 
+<span class="ansi-green-fg">      5</span> red <span class="ansi-yellow-intense-fg ansi-bold">=</span> <span class="ansi-yellow-intense-fg ansi-bold">[</span><span class="ansi-cyan-intense-fg ansi-bold">255</span><span class="ansi-yellow-intense-fg ansi-bold">,</span> <span class="ansi-cyan-intense-fg ansi-bold">0</span><span class="ansi-yellow-intense-fg ansi-bold">,</span> <span class="ansi-cyan-intense-fg ansi-bold">0</span><span class="ansi-yellow-intense-fg ansi-bold">]</span>
+
+<span class="ansi-green-intense-fg ansi-bold">c:\users\daniel\anaconda3\envs\newwebsite\lib\site-packages\plotly\plotly\__init__.py</span> in <span class="ansi-cyan-fg">&lt;module&gt;</span>
+<span class="ansi-green-fg">      2</span> <span class="ansi-green-intense-fg ansi-bold">from</span> _plotly_future_ <span class="ansi-green-intense-fg ansi-bold">import</span> _chart_studio_error
+<span class="ansi-green-fg">      3</span> 
+<span class="ansi-green-intense-fg ansi-bold">----&gt; 4</span><span class="ansi-yellow-intense-fg ansi-bold"> </span>_chart_studio_error<span class="ansi-yellow-intense-fg ansi-bold">(</span><span class="ansi-blue-intense-fg ansi-bold">"plotly"</span><span class="ansi-yellow-intense-fg ansi-bold">)</span>
+
+<span class="ansi-green-intense-fg ansi-bold">c:\users\daniel\anaconda3\envs\newwebsite\lib\site-packages\_plotly_future_\__init__.py</span> in <span class="ansi-cyan-fg">_chart_studio_error</span><span class="ansi-blue-intense-fg ansi-bold">(submodule)</span>
+<span class="ansi-green-fg">     47</span> chart_studio<span class="ansi-yellow-intense-fg ansi-bold">.</span><span class="ansi-yellow-intense-fg ansi-bold">{</span>submodule<span class="ansi-yellow-intense-fg ansi-bold">}</span> module instead<span class="ansi-yellow-intense-fg ansi-bold">.</span>
+<span class="ansi-green-fg">     48</span> """.format(
+<span class="ansi-green-intense-fg ansi-bold">---&gt; 49</span><span class="ansi-yellow-intense-fg ansi-bold">             </span>submodule<span class="ansi-yellow-intense-fg ansi-bold">=</span>submodule
+<span class="ansi-green-fg">     50</span>         )
+<span class="ansi-green-fg">     51</span>     )
+
+<span class="ansi-red-intense-fg ansi-bold">ImportError</span>: 
+The plotly.plotly module is deprecated,
+please install the chart-studio package and use the
+chart_studio.plotly module instead. 
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>So now, being in 3D color space and all, it's pretty easy to see that you could generate an infinite amount of colors from red to green by simply drawing a line from the red circle located at $[255, 0, 0]$ to the green circle $[0, 255, 0]$.  If we define a variable $t \in [0,1]$, it can be thought of the distance traveled on the line from red to green.  When $t = 0.5$, we're halway from red to green.  If we do this linearly, we get an equation like this:</p>
+$$color(t) = [255, 0, 0] + t\times([0, 255, 0]-[255, 0, 0])$$<p>Which is an easy function to code using numpy.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [37]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="k">def</span> <span class="nf">linear_color</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">colors</span><span class="p">):</span>
+    <span class="sd">""" returns a color at distance t from color 1 to color 2 </span>
+<span class="sd">    </span>
+<span class="sd">    t: floating point between [0,1]</span>
+<span class="sd">    colors: list of two colors    </span>
+<span class="sd">    """</span>
+    <span class="n">colors</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">map</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">,</span> <span class="n">colors</span><span class="p">))</span>
+    <span class="k">return</span> <span class="n">colors</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="n">t</span> <span class="o">*</span> <span class="p">(</span><span class="n">colors</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">colors</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Any molecule activity, when scaled to be $[0,1]$ would then have a color on this gradient line. We can see what that would look like for one hundered values traveling from red to green.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [38]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">ts</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
+
+<span class="n">colors_red_to_green</span> <span class="o">=</span> <span class="p">[</span><span class="n">linear_color</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="p">[</span><span class="n">red</span><span class="p">,</span> <span class="n">green</span><span class="p">])</span> <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="n">ts</span><span class="p">]</span>
+<span class="n">line_data</span> <span class="o">=</span> <span class="p">[]</span>
+
+<span class="k">for</span> <span class="n">color</span> <span class="ow">in</span> <span class="n">colors_red_to_green</span><span class="p">:</span>
+    <span class="n">line_data</span><span class="o">.</span><span class="n">append</span><span class="p">(</span>
+                    <span class="n">go</span><span class="o">.</span><span class="n">Scatter3d</span><span class="p">(</span>
+                                <span class="n">x</span><span class="o">=</span><span class="n">color</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span>
+                                <span class="n">y</span><span class="o">=</span><span class="n">color</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span>
+                                <span class="n">z</span><span class="o">=</span><span class="n">color</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span>
+                                <span class="n">mode</span><span class="o">=</span><span class="s1">'markers'</span><span class="p">,</span>
+                                <span class="n">marker</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span>
+                                            <span class="n">color</span><span class="o">=</span><span class="s1">'rgb(</span><span class="si">{0}</span><span class="s1">, </span><span class="si">{1}</span><span class="s1">, </span><span class="si">{2}</span><span class="s1">)'</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">color</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">color</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">color</span><span class="p">[</span><span class="mi">2</span><span class="p">]),</span>
+                                            <span class="n">size</span><span class="o">=</span><span class="mi">12</span><span class="p">,</span>
+                                            <span class="n">symbol</span><span class="o">=</span><span class="s1">'circle'</span><span class="p">,</span>
+                                            <span class="n">line</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span>
+                                            <span class="n">color</span><span class="o">=</span><span class="s1">'rgb(</span><span class="si">{0}</span><span class="s1">, </span><span class="si">{1}</span><span class="s1">, </span><span class="si">{2}</span><span class="s1">)'</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">color</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">color</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">color</span><span class="p">[</span><span class="mi">2</span><span class="p">]),</span>
+                                            <span class="n">width</span><span class="o">=</span><span class="mi">1</span>
+                                                    <span class="p">)</span>
+                                            <span class="p">)</span>
+                                    <span class="p">)</span>
+                        <span class="p">)</span>
+    
+<span class="n">layout</span> <span class="o">=</span> <span class="n">go</span><span class="o">.</span><span class="n">Layout</span><span class="p">(</span><span class="n">showlegend</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">fig</span> <span class="o">=</span> <span class="n">go</span><span class="o">.</span><span class="n">Figure</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">data</span><span class="o">+</span><span class="n">line_data</span><span class="p">,</span> <span class="n">layout</span><span class="o">=</span><span class="n">layout</span><span class="p">)</span>
+<span class="n">py</span><span class="o">.</span><span class="n">iplot</span><span class="p">(</span><span class="n">fig</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt output_prompt">Out[38]:</div>
+
+
+
+<div class="output_html rendered_html output_subarea output_execute_result"><iframe id="igraph" scrolling="no" style="border:none;" seamless="seamless" src="https://plot.ly/~russodanielp/38.embed" height="525px" width="100%"></iframe></div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>The problem with that is that it's pretty ugly for inconclusive colors, that is molecules that are equidistant between active and inactive.  Let's say we wanted to have these colors take on a nicer blue color to show moderate activity.  We can do that if we take a detour in our 3D space.  Instead of linearly traveling from red to green, let's go around the ugly colors and approach the blue space.  To do that, we can use a Bezier curve.  A Bezier curve can create a nice smooth curve, given $n$ control points that dictate its shape.  As an example, we can use the red, blue, and green as our control points.  What the Bezier curve essentially does is it draws two lines, one from red to blue, the other from blue to green.  If $t$ is a point on each of these lines starting at $0$ (the green point for the first line and the blue for the second) the Bezier curve is the curve that connects these two points as $t$ travels from $0$ to $1$ along the lines.  This is much easier to understand when demonstrated visually, so <a href="https://www.jasondavies.com/animated-bezier/">here</a> is a nice interactive I found that shows how a Bezier curve can be drawn for an arbitrary number of control points at any distance.  Mathematically, the equation looks like this for n+1 control colors, where $P$ is a control color:</p>
+$$B(t) = \sum\limits_{i=1}^n b_{i,n} (t)P_{i}$$<p>$b_{i,n}(t)$ is the Bernstein coefficient defined as</p>
+$$b_{i,n}(t) = \bigg(\frac{n!}{i!(n-i)!}\bigg)t^i(1-t)^{n-i}$$<p>So, what that would look like for our three control points <code>[red, blue, green]</code>, would be this:</p>
+$$ B(t) = b_{0,2}(t)[255, 0, 0] + b_{1,2}(t)[0, 0, 255] + b_{2,2}(t)[0, 255, 0] $$<p>Using these equations, we can write two functions that can calculate a color for any point $t$ given any number of control points.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [41]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">bernstein_coefficient</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">i</span><span class="p">,</span> <span class="n">n</span><span class="p">):</span>
+    <span class="sd">""" return the bernstein_constant for a Bezier curve</span>
+<span class="sd">    </span>
+<span class="sd">    t: floating point between [0,1]</span>
+<span class="sd">    i: int between [0,n]</span>
+<span class="sd">    n: number of control points</span>
+<span class="sd">    """</span>
+    <span class="kn">import</span> <span class="nn">math</span>
+    <span class="n">term1</span> <span class="o">=</span> <span class="n">math</span><span class="o">.</span><span class="n">factorial</span><span class="p">(</span><span class="n">n</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="n">math</span><span class="o">.</span><span class="n">factorial</span><span class="p">(</span><span class="n">i</span><span class="p">)</span><span class="o">*</span><span class="n">math</span><span class="o">.</span><span class="n">factorial</span><span class="p">(</span><span class="n">n</span><span class="o">-</span><span class="n">i</span><span class="p">))</span>
+    <span class="n">term2</span> <span class="o">=</span> <span class="p">((</span><span class="mi">1</span><span class="o">-</span><span class="n">t</span><span class="p">)</span><span class="o">**</span><span class="p">(</span><span class="n">n</span><span class="o">-</span><span class="n">i</span><span class="p">))</span><span class="o">*</span><span class="p">(</span><span class="n">t</span><span class="o">**</span><span class="n">i</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">term1</span><span class="o">*</span><span class="n">term2</span>
+
+<span class="k">def</span> <span class="nf">bezier_point</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">control_points</span><span class="p">):</span>
+    <span class="sd">""" Return RGB values for a point on a bezier curve given at t given a list of control points</span>
+<span class="sd">    </span>
+<span class="sd">    t: floating point between [0,1]</span>
+<span class="sd">    control_points: list of control points, which should be in three dimensions (R,G,B)</span>
+<span class="sd">    """</span>
+    <span class="n">control_points</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">map</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">,</span> <span class="n">control_points</span><span class="p">))</span>
+    <span class="n">result</span> <span class="o">=</span> <span class="p">[</span>
+        <span class="n">bernstein_coefficient</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">i</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">control_points</span><span class="p">)</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span><span class="o">*</span><span class="n">pnt</span> <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">pnt</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">control_points</span><span class="p">)</span>
+    <span class="p">]</span>
+    <span class="k">return</span> <span class="p">[</span><span class="nb">int</span><span class="p">(</span><span class="nb">sum</span><span class="p">(</span><span class="n">pnt</span><span class="p">))</span> <span class="k">for</span> <span class="n">pnt</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="o">*</span><span class="n">result</span><span class="p">)]</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Finally, the Bezier curve for our three control points would look something like this:</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [40]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">colors_red_to_green</span> <span class="o">=</span> <span class="p">[</span><span class="n">bezier_point</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="p">[</span><span class="n">red</span><span class="p">,</span> <span class="n">blue</span><span class="p">,</span> <span class="n">green</span><span class="p">])</span> <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="n">ts</span><span class="p">]</span>
+
+<span class="n">curve_data</span> <span class="o">=</span> <span class="p">[]</span>
+
+<span class="k">for</span> <span class="n">color</span> <span class="ow">in</span> <span class="n">colors_red_to_green</span><span class="p">:</span>
+    <span class="n">curve_data</span><span class="o">.</span><span class="n">append</span><span class="p">(</span>
+                    <span class="n">go</span><span class="o">.</span><span class="n">Scatter3d</span><span class="p">(</span>
+                                <span class="n">x</span><span class="o">=</span><span class="n">color</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span>
+                                <span class="n">y</span><span class="o">=</span><span class="n">color</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span>
+                                <span class="n">z</span><span class="o">=</span><span class="n">color</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span>
+                                <span class="n">mode</span><span class="o">=</span><span class="s1">'markers'</span><span class="p">,</span>
+                                <span class="n">marker</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span>
+                                            <span class="n">color</span><span class="o">=</span><span class="s1">'rgb(</span><span class="si">{0}</span><span class="s1">, </span><span class="si">{1}</span><span class="s1">, </span><span class="si">{2}</span><span class="s1">)'</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">color</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">color</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">color</span><span class="p">[</span><span class="mi">2</span><span class="p">]),</span>
+                                            <span class="n">size</span><span class="o">=</span><span class="mi">12</span><span class="p">,</span>
+                                            <span class="n">symbol</span><span class="o">=</span><span class="s1">'circle'</span><span class="p">,</span>
+                                            <span class="n">line</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span>
+                                            <span class="n">color</span><span class="o">=</span><span class="s1">'rgb(</span><span class="si">{0}</span><span class="s1">, </span><span class="si">{1}</span><span class="s1">, </span><span class="si">{2}</span><span class="s1">)'</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">color</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">color</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">color</span><span class="p">[</span><span class="mi">2</span><span class="p">]),</span>
+                                            <span class="n">width</span><span class="o">=</span><span class="mi">1</span>
+                                                    <span class="p">)</span>
+                                            <span class="p">)</span>
+                                    <span class="p">)</span>
+                        <span class="p">)</span>
+    
+<span class="n">layout</span> <span class="o">=</span> <span class="n">go</span><span class="o">.</span><span class="n">Layout</span><span class="p">(</span><span class="n">showlegend</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">fig</span> <span class="o">=</span> <span class="n">go</span><span class="o">.</span><span class="n">Figure</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">data</span><span class="o">+</span><span class="n">curve_data</span><span class="p">,</span> <span class="n">layout</span><span class="o">=</span><span class="n">layout</span><span class="p">)</span>
+<span class="n">py</span><span class="o">.</span><span class="n">iplot</span><span class="p">(</span><span class="n">fig</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt output_prompt">Out[40]:</div>
+
+
+
+<div class="output_html rendered_html output_subarea output_execute_result"><iframe id="igraph" scrolling="no" style="border:none;" seamless="seamless" src="https://plot.ly/~russodanielp/40.embed" height="525px" width="100%"></iframe></div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>We are left with a much nicer looking color gradient using a Bezier curve.  Many thanks to <a href="https://sites.google.com/site/nastassiapouradierduteil/">Nastassia Pouradier Duteil</a> for working through the math with me.</p>
+
+</div>
+</div>
+</div>
+    </div>
+                    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML" integrity="sha384-3lJUsx1TJHt7BA4udB5KPnDrlkO8T6J6v/op7ui0BbCjvZ9WqV4Xm6DTP6kQ/iBH" crossorigin="anonymous"></script><script type="text/x-mathjax-config">
+        MathJax.Hub.Config({tex2jax: {inlineMath: [['$latex ','$'], ['\\(','\\)']]}});
+        </script></article><!--End of body content--><footer id="footer">
+            Contents © 2022         <a href="mailto:russodanielp@gmail.com">Daniel P. Russo</a> 
+            
+        </footer>
+</div>
+</div>
+
+        <script src="../../assets/js/all-nocdn.js"></script><script>
+    baguetteBox.run('div#content', {
+        ignoreClass: 'islink',
+        captions: function(element) {
+            return element.getElementsByTagName('img')[0].alt;
+    }});
+    </script>
+</body>
+</html>
